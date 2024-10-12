@@ -1,0 +1,247 @@
+﻿<Page x:Class="SuperSchool420.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SuperSchool420.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="AuthorizationPage">
+    <Page.Resources>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="RoundedTBX" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="25" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid Height="1080" 
+         Width="960" 
+         HorizontalAlignment="Left" 
+         VerticalAlignment="Center" 
+         Background="#FA7080">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border CornerRadius="60"
+           Background="White"
+           Height="600"
+           Width="500"
+           Grid.Column="0"
+           Grid.Row="0"
+           Grid.ColumnSpan="3">
+                <Image Source="/Images/User.png"
+                  Height="200"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="154,21,0,0" Width="211"/>
+            </Border>
+            <TextBox
+           Margin="0,513,0,498"
+           BorderBrush="Black"
+           BorderThickness="2" 
+           Grid.Column="1"
+           FontFamily="Comic Sans MS"
+           FontSize="20"
+           Text="Клиент"
+           FontWeight="Bold"
+           TextAlignment="Center"
+           VerticalContentAlignment="Center"
+           IsReadOnly="True"
+           Style="{DynamicResource RoundedTBX}">
+
+            </TextBox>
+            <TextBox Style="{DynamicResource RoundedTBX}"
+               Margin="0,609,0,402"
+               BorderBrush="Black"
+               BorderThickness="2" 
+                Grid.Column="1"
+                FontFamily="Comic Sans MS"
+                FontSize="20"
+                Text="**********"
+                FontWeight="Bold"
+                TextAlignment="Center"
+                VerticalContentAlignment="Center"
+                IsReadOnly="True" />
+            <Rectangle Fill="#FA7080" Stroke="#FA7080" StrokeThickness="2" Width="100" Height="10" Grid.Column="1" Margin="11,691,209,374" />
+            <Button x:Name="btnLog"
+           Grid.Column="1"
+           Background="#5ED0BD"
+           BorderThickness="0"
+           Content="Войти"
+           Foreground="White"
+           FontSize="20"
+           FontFamily="Montserrat"
+           Cursor="Hand"
+           VerticalAlignment="Top"
+           HorizontalAlignment="Left" 
+           
+           Height="93" 
+           Width="98" Margin="108,690,0,0" Click="btnLog_Click" 
+          >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#28AEED"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#2788EF"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="40"
+            CornerRadius="15"
+           Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                          HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Rectangle Fill="#5ED0BD" Stroke="#5ED0BD" StrokeThickness="2" Width="100" Height="10" Grid.Column="1" Margin="221,691,319,379" Grid.ColumnSpan="2" />
+            <Rectangle Fill="#5ED0BD" Stroke="#5ED0BD" StrokeThickness="2" Width="50" Height="10" Grid.Column="1" Margin="158,691,112,379" />
+        </Grid>
+        <Grid Height="1080" 
+         Width="960" 
+         HorizontalAlignment="Right" 
+         VerticalAlignment="Center"
+         Background="#5ED0BD">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border CornerRadius="60"
+               Background="White"
+               Height="600"
+               Width="500"
+               Grid.Column="0"
+               Grid.ColumnSpan="3" Margin="224,246,236,234" Grid.RowSpan="3">
+                <Image Source="/Images/Admin.png"
+                  Height="200"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Center"
+                  Margin="10"/>
+            </Border>
+            <TextBox
+                BorderBrush="Black"
+                BorderThickness="2"
+                FontFamily="Comic Sans MS"
+                FontSize="20"
+                Text="Сотрудник"
+                FontWeight="Bold"
+                TextAlignment="Center"
+                VerticalContentAlignment="Center" 
+                Grid.ColumnSpan="2" 
+                Margin="305,150,15,141"
+                Grid.Row="1"
+                IsReadOnly="True"
+                Style="{DynamicResource RoundedTBX}"/>
+            <TextBox
+                BorderBrush="Black"
+                BorderThickness="2"
+                FontFamily="Comic Sans MS"
+                FontSize="20"
+                Text="**********"
+                FontWeight="Bold"
+                TextAlignment="Center"
+                VerticalContentAlignment="Center" 
+                Grid.ColumnSpan="2" 
+                Margin="305,243,15,48"
+                Grid.Row="1"
+                IsReadOnly="True" Cursor="Hand"
+                Style="{DynamicResource RoundedTBX}"/>
+            <Button x:Name="btnSot"
+               Grid.Column="1"
+               Background="#FA7080"
+               BorderThickness="0"
+               Content="Войти"
+               Foreground="White"
+               FontSize="20"
+               FontFamily="Montserrat"
+               Cursor="Hand"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left" 
+               Height="100" 
+               Width="100" 
+               Margin="96,321,0,0" 
+               Grid.RowSpan="2" 
+               Grid.Row="1" Click="btnSot_Click" 
+              >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#28AEED"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#2788EF"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="40"
+CornerRadius="15"
+   Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Rectangle Fill="#5ED0BD" Stroke="#5ED0BD" StrokeThickness="2" Width="100" Height="10" Margin="302,331,238,19" Grid.Row="1" Grid.ColumnSpan="2" />
+            <Rectangle Fill="#FA7080" Stroke="#FA7080" StrokeThickness="2" Width="100" Height="10" Margin="204,327,16,23" Grid.Row="1" Grid.Column="1" />
+            <Rectangle Fill="#FA7080" Stroke="#FA7080" StrokeThickness="2" Width="50" Height="10" Margin="143,327,127,23" Grid.Row="1" Grid.Column="1" />
+            <Image Source="/Images/KtitsLogo.png" Margin="-945,204,915,6" Grid.Row="2" Height="150" Width="350" />
+        </Grid>
+    </Grid>
+</Page>

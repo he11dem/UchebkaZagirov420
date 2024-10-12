@@ -1,0 +1,258 @@
+﻿<Window x:Class="SuperSchool420.Windows.ClientsServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SuperSchool420.Windows"
+        mc:Ignorable="d"
+        Title="ClientsServiceWindow" 
+        Height="650" 
+        Width="800"
+         WindowStartupLocation="CenterScreen"
+         MouseDown="Window_MouseDown"
+         Background="Transparent"
+         AllowsTransparency="True"
+         ResizeMode="NoResize"
+         WindowStyle="None">
+    <Border CornerRadius="50">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#462adb" Offset="0"/>
+                <GradientStop Color="#da34ae" Offset="0.5"/>
+                <GradientStop Color="#8a16c1" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="#060531" Offset="0"/>
+                <GradientStop Color="#1b1448" Offset="0.5"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Margin="10,10,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnMinimize"
+                 BorderThickness="0"
+                 Content="-"
+                 Foreground="White"
+                 FontSize="16"
+                 FontFamily="Montserrat"
+                 Cursor="Hand"
+                 Grid.Column="1"
+                 Click="btnMinimize_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#28AEED"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#2788EF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+              CornerRadius="9"
+              Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="btnClose"
+                Background="#DA34AE"
+                BorderThickness="0"
+                Content="X"
+                Foreground="White"
+                FontSize="12"
+                FontFamily="Montserrat"
+                Cursor="Hand"
+                Grid.Column="2"
+                Click="btnClose_Click" Height="20" VerticalAlignment="Top">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#28AEED"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#2788EF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" 
+                            Height="18"
+                            CornerRadius="9"
+                            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                 HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <StackPanel
+                Grid.Row="1"
+                Orientation="Vertical"
+                Margin="158,48,142,72"
+                Width="500"
+                Height="500">
+                <TextBlock Text="Записи клиентов"
+                   Foreground="White"
+                   FontSize="25"
+                   FontWeight="Medium"
+                   FontFamily="Montserrat"
+                   HorizontalAlignment="Center"/>
+                <ListView x:Name="ProductLV" 
+                          FontSize="40" 
+                          d:ItemsSource="{d:SampleData ItemCount=4}"
+                          Width="484" 
+                          Height="500"
+                          ItemsSource="{Binding clientServices}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="101" 
+                         Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="2" 
+                    BorderBrush="Black" 
+                    Margin="0" 
+                    Padding="1">
+                                <StackPanel>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" 
+                                        Width="660">
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="ФИО:"
+                                           FontSize="20"
+                                        Height="Auto"
+                                        Width="Auto"
+                                        TextWrapping="Wrap" 
+                                           FontWeight="Bold"
+                                        FontFamily="Comic Sans MS"
+                                        Margin="10 0 0 0"/>
+                                                <TextBlock FontSize="20"
+                                               Height="Auto"
+                                               Width="Auto"
+                                               TextWrapping="Wrap" 
+                                               FontFamily="Comic Sans MS" 
+                                               Text="{Binding Client.FirstName}" 
+                                               Margin="5 0 0 0"/>
+                                                <TextBlock FontSize="20"
+                                               Height="Auto"
+                                               Width="Auto" 
+                                               TextWrapping="Wrap" 
+                                               FontFamily="Comic Sans MS" 
+                                               Text="{Binding Client.LastName}" 
+                                               Margin="5 0 0 0"/>
+                                                <TextBlock FontSize="20"
+                                               Height="Auto"
+                                               Width="Auto"
+                                               TextWrapping="Wrap" 
+                                               FontFamily="Comic Sans MS" 
+                                               Text="{Binding Client.Patronymic}" 
+                                               Margin="5 0 0 0"/>
+                                                <TextBlock Text="Данные:"
+                                           FontSize="20"
+                                        Height="Auto"
+                                        Width="Auto"
+                                        TextWrapping="Wrap" 
+                                           FontWeight="Bold"
+                                        FontFamily="Comic Sans MS"
+                                        Margin="10 0 0 0"/>
+                                                <TextBlock FontSize="20"
+                                            Height="Auto"
+                                            Width="Auto"
+                                            TextWrapping="Wrap" 
+                                            FontFamily="Comic Sans MS" 
+                                            Text="{Binding Client.Email}" 
+                                            Margin="5 0 0 0"/>
+                                                <TextBlock FontSize="20"
+                                            Height="Auto"
+                                            Width="Auto"
+                                            TextWrapping="Wrap" 
+                                            FontFamily="Comic Sans MS" 
+                                            Text="{Binding Client.Phone}" 
+                                            Margin="5 0 0 0"/>
+                                            </StackPanel>
+
+                                            <Border Width="3"
+                                    Background="Black"
+                                    Margin="10 0 0 0"/>
+                                            <StackPanel Orientation="Vertical"
+                                        Width="500">
+                                                <TextBlock Text="Услуга:"
+                                           FontSize="20"
+                                        Height="Auto"
+                                        Width="Auto"
+                                        TextWrapping="Wrap" 
+                                           FontWeight="Bold"
+                                        FontFamily="Comic Sans MS"
+                                        Margin="10 0 0 0"/>
+                                                <TextBlock FontSize="20"
+                                        Height="Auto"
+                                        Width="Auto"
+                                        TextWrapping="Wrap" 
+                                        FontFamily="Comic Sans MS" 
+                                        Text="{Binding Service.Title}" 
+                                        Margin="20 0 0 0"/>
+                                                <TextBlock Text="Дата и время:"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                        Height="Auto"
+                                        Width="Auto"
+                                        TextWrapping="Wrap" 
+                                        FontFamily="Comic Sans MS"
+                                        Margin="10 0 0 0"/>
+                                                <TextBlock FontSize="20"
+                                        Height="Auto"
+                                        Width="Auto"
+                                        TextWrapping="Wrap" 
+                                        FontFamily="Comic Sans MS" 
+                                        Text="{Binding StartTime}" 
+                                        Margin="20 0 0 0"/>
+                                                <TextBlock FontSize="20"
+                                        Height="Auto"
+                                        Width="Auto"
+                                        TextWrapping="Wrap" 
+                                        FontFamily="Comic Sans MS" 
+                                        Text="{Binding Comment}"
+                                        Foreground="Red"
+                                        Margin="20 0 0 0"/>
+                                                <TextBlock Name="TimerDateTB"
+                                           Height="40"
+                                           Width="520"
+                                           FontSize="20"
+                                           TextWrapping="Wrap" 
+                                           FontFamily="Comic Sans MS"
+                                           Foreground="{Binding TextColor}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

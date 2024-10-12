@@ -1,0 +1,257 @@
+﻿<Page x:Class="SuperSchool420.Pages.ClientHomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SuperSchool420.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="ClientHomePage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="ProductLV" 
+                  FontSize="40" 
+  VerticalAlignment="Top"
+  Grid.Column="3" 
+  Grid.ColumnSpan="6" 
+  Grid.RowSpan="9"
+  d:ItemsSource="{d:SampleData ItemCount=5}" 
+  Height="902" Margin="144,27,62,0" Grid.Row="1">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="100" Columns="1"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="2" 
+            BorderBrush="Black" 
+            Margin="0" 
+            Padding="1"
+            Background="{Binding BackgroundColor}">
+                        <StackPanel>
+                            <StackPanel >
+                                <StackPanel Orientation="Horizontal">
+
+                                    <StackPanel Orientation="Horizontal" 
+                                Width="190" 
+                                Margin="15">
+                                        <Image Source="{Binding MainImagePath}" 
+                               Width="190"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Vertical" 
+                                Width="740" 
+                                Height="Auto">
+                                        <StackPanel Orientation="Horizontal"
+                                    >
+                                            <TextBlock FontSize="26" 
+                                       Width="700"
+                                       Height="Auto"
+                                       TextWrapping="Wrap" 
+                                       FontFamily="Comic Sans MS" 
+                                       Text="{Binding Title}" 
+                                       Margin="20 0 0 0"
+                                       />
+
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontSize="25" 
+                                   FontFamily="Comic Sans MS" 
+                                   HorizontalAlignment="Left" 
+                                   Margin="20 0 0 0"
+                                   TextDecorations="Strikethrough"
+                                   Text="{Binding Cost}"
+                                   TextWrapping="Wrap"
+                                   Visibility="{Binding PreviousCostVisibility}"/>
+                                            <TextBlock Text="{Binding CostAndDurationText}"
+                                       FontFamily="Comic Sans MS"
+                                       FontSize="25"/>
+                                            <!--<TextBlock FontFamily="Comic Sans MS" 
+                                       Margin="10 0 0 0" 
+                                       Text="рублей за"
+                                       FontSize="25"/>-->
+                                            <!--<TextBlock FontFamily="Comic Sans MS" 
+                                       HorizontalAlignment="Left" 
+                                       Margin="10 0 0 0"
+                                       FontSize="25"
+                                       x:Name="DurationTb"
+                                       Text="{Binding DurationInSeconds}"/>-->
+                                            <!--<TextBlock FontFamily="Comic Sans MS" 
+                                       Margin="10 0 0 0" 
+                                       Text="секунд"
+                                       FontSize="25"/>-->
+
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding DiscountText}"
+                                   Visibility="{Binding DiscountTextVisibility}"
+                                   FontFamily="Comic Sans MS"
+                                   Margin="20 0 0 0"
+                                   FontSize="25"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock x:Name="tbDataCount" 
+   FontFamily="COMIC SANS MS"
+   FontSize="25"
+   Height="50"
+   Width="150"
+   Grid.Row="9"
+   Margin="61,16,2,42"
+   Grid.Column="1"/>
+        <Border
+    CornerRadius="60"
+        Grid.Column="0"
+        Grid.Row="1"
+        Grid.ColumnSpan="4" Margin="56,12,105,18" Grid.RowSpan="8">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462adb" Offset="0"/>
+                    <GradientStop Color="#da34ae" Offset="0.5"/>
+                    <GradientStop Color="#8a16c1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#1b1448" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <TextBlock Text="Поиск"
+           Foreground="DarkGray"
+           FontSize="20"
+           FontWeight="Medium"
+           FontFamily="Montserrat"
+           Margin="14,40,199,104"
+           Grid.Column="1"
+           Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+
+        <TextBox  x:Name="SearchTbx"
+              FontSize="13"
+              FontWeight="Medium"
+              FontFamily="Montserrat"
+              Background="Transparent"
+              Foreground="White"
+              BorderBrush="DarkGray"
+              BorderThickness="0,0,0,1"
+              Height="40"
+              VerticalAlignment="Top"
+              Margin="209,68,9,0"
+              Grid.ColumnSpan="3"
+              Grid.Row="3" 
+          Grid.RowSpan="2" 
+          TextChanged="SearchTbx_TextChanged_1"/>
+        <TextBlock Text="Фильтры:"
+            Foreground="White"
+            FontSize="45"
+            FontWeight="Medium"
+            FontFamily="Comic Sans MS"
+            HorizontalAlignment="Left"
+           Grid.Column="1"
+           Grid.Row="2"
+           Grid.ColumnSpan="2" Margin="113,42,0,66" Grid.RowSpan="2"
+           />
+        <TextBlock Text="Скидка"
+   Foreground="DarkGray"
+   FontSize="20"
+   FontWeight="Medium"
+   FontFamily="Montserrat"
+   Margin="10,20,203,14"
+   Grid.Column="1"
+   Grid.Row="4" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="FiltrSaleCb"
+   FontFamily="Comic Sans MS"
+   FontSize="21"
+   Height="40"
+   Grid.Column="1"
+   Grid.Row="4"
+   Background="White"
+   BorderBrush="DarkGray"
+   BorderThickness="0,0,0,1" 
+   Grid.ColumnSpan="2" Margin="8,66,9,2" SelectionChanged="FiltrSaleCb_SelectionChanged_1" Cursor=""
+  />
+        <TextBlock Text="Сортировка"
+           Foreground="DarkGray"
+           FontSize="20"
+           FontWeight="Medium"
+           FontFamily="Montserrat"
+           Margin="12,24,201,12"
+           Grid.Column="1"
+           Grid.Row="5" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="FiltrCb"
+  FontFamily="Comic Sans MS"
+  FontSize="21"
+  Height="40"
+  SelectionChanged="FiltrCbClik"
+  Grid.Column="1" 
+  Grid.ColumnSpan="2" 
+  Margin="8,64,9,4" 
+  Grid.Row="5"/>
+        <Button x:Name="ExitBtn"
+        Background="#5ED0BD"
+        BorderThickness="0"
+        Content="Назад"
+        Foreground="White"
+        FontSize="15"
+        FontFamily="Montserrat"
+        Cursor="Hand"
+        Margin="22,7,191,43"
+         Grid.ColumnSpan="2" 
+        Grid.Row="9" Click="ExitBtn_Click" 
+       >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#28AEED"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#2788EF"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="150" 
+                    Height="40"
+                    CornerRadius="20"
+                Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+        </Button>
+
+    </Grid>
+</Page>
